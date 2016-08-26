@@ -1,0 +1,1101 @@
+{ "RootDSE" : {
+    "descr" : "Dump RootDSE information",
+    "ldap" : {
+        "base" : "",
+        "scope" : "base",
+        "filter" : "(objectClass=*)",
+        "attrs" : [
+            { "type" : "str", "name" : "configurationNamingContext"},
+            { "type" : "str", "name" : "currentTime"},
+            { "type" : "str", "name" : "defaultNamingContext"},
+            { "type" : "str", "name" : "dnsHostName"},
+            { "type" : "str", "name" : "domainControllerFunctionality"},
+            { "type" : "str", "name" : "domainFunctionality"},
+            { "type" : "str", "name" : "dsServiceName"},
+            { "type" : "str", "name" : "forestFunctionality"},
+            { "type" : "str", "name" : "highestCommittedUSN"},
+            { "type" : "str", "name" : "isGlobalCatalogReady"},
+            { "type" : "str", "name" : "isSynchronized"},
+            { "type" : "str", "name" : "ldapServiceName"},
+            { "type" : "str", "name" : "namingContexts"},
+            { "type" : "str", "name" : "rootDomainNamingContext"},
+            { "type" : "str", "name" : "schemaNamingContext"},
+            { "type" : "str", "name" : "serverName"},
+            { "type" : "str", "name" : "subschemaSubentry"},
+            { "type" : "str", "name" : "supportedCapabilities"},
+            { "type" : "str", "name" : "supportedControl"},
+            { "type" : "str", "name" : "supportedLDAPPolicies"},
+            { "type" : "str", "name" : "supportedLDAPVersion"},
+            { "type" : "str", "name" : "supportedSASLMechanisms"},
+        ]
+    }
+  },
+  
+  "top" : {
+    "descr" : "Dump common attributes for all AD objects (security descriptor in particular)",
+    "ldap" : {
+        "base" : "*",
+        "scope" : "subtree",
+        "filter" : "(objectClass=*)",
+        "attrs" : [
+            { "type" : "str", "name" : "adminDescription"},
+            { "type" : "str", "name" : "adminDisplayName"},
+            { "type" : "str", "name" : "cn"},
+            { "type" : "str", "name" : "description"},
+            { "type" : "str", "name" : "displayName"},
+            { "type" : "str", "name" : "dSCorePropagationData"},
+            { "type" : "int", "name" : "flags"},
+            { "type" : "bin", "name" : "nTSecurityDescriptor"},
+            { "type" : "str", "name" : "objectClass"},
+            { "type" : "str", "name" : "objectCategory"},
+            { "type" : "bin", "name" : "objectGUID"},
+            { "type" : "int", "name" : "revision"},
+            { "type" : "int", "name" : "uSNChanged"},
+            { "type" : "int", "name" : "uSNCreated"},
+            { "type" : "str", "name" : "whenCreated"},
+            { "type" : "str", "name" : "whenChanged"},
+        ],
+        "controls" : [
+            { "name" : "LDAP_SERVER_SD_FLAGS_OID", 
+              "ctrltype" : "server",
+              "valuetype" : "int",
+              "value" : "7",
+              "oid" : "1.2.840.113556.1.4.801" }
+        ]
+    }
+  },
+  
+  "user" : {
+    "descr" : "Dump AD user attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(&(objectClass=user)(!(objectClass=computer))(!(objectClass=msDS-ManagedServiceAccount)))",
+        "attrs" : [
+            { "type" : "str", "name" : "accountNameHistory"},
+            { "type" : "str", "name" : "altSecurityIdentities"},
+            { "type" : "int", "name" : "msDS-KeyVersionNumber"},
+            { "type" : "bin", "name" : "objectSid"},
+            { "type" : "str", "name" : "sAMAccountName"},
+            { "type" : "int", "name" : "sAMAccountType"},
+            { "type" : "bin", "name" : "sIDHistory"},
+            { "type" : "bin", "name" : "supplementalCredentials"},
+            
+            { "type" : "str", "name" : "info"},
+            
+            { "type" : "str", "name" : "memberOf"},
+            
+            { "type" : "int", "name" : "gidNumber"},
+            { "type" : "str", "name" : "loginShell"},
+            { "type" : "str", "name" : "uid"},
+            { "type" : "int", "name" : "uidNumber"},
+            { "type" : "str", "name" : "unixHomeDirectory"},
+            { "type" : "str", "name" : "unixUserPassword"},
+            
+            { "type" : "int", "name" : "shadowExpire"},
+            { "type" : "int", "name" : "shadowFlag"},
+            { "type" : "int", "name" : "shadowInactive"},
+            { "type" : "int", "name" : "shadowLastChange"},
+            { "type" : "int", "name" : "shadowMax"},
+            { "type" : "int", "name" : "shadowMin"},
+        
+            { "type" : "int", "name" : "accountExpires"},
+            { "type" : "int", "name" : "adminCount"},
+            { "type" : "int", "name" : "badPwdCount"},
+            { "type" : "bin", "name" : "controlAccessRights"},
+            { "type" : "str", "name" : "defaultClassStore"},
+            { "type" : "str", "name" : "homeDirectory"},
+            { "type" : "str", "name" : "homeDrive"},
+            { "type" : "int", "name" : "lastLogon"},
+            { "type" : "int", "name" : "lastLogonTimestamp"},
+            { "type" : "int", "name" : "lockoutTime"},
+            { "type" : "int", "name" : "logonCount"},
+            { "type" : "bin", "name" : "logonHours"},
+            { "type" : "str", "name" : "msDS-AuthenticatedAtDC"},
+            { "type" : "str", "name" : "msDS-AssignedAuthNPolicy"},
+            { "type" : "str", "name" : "msDS-AssignedAuthNPolicySilo"},
+            { "type" : "bin", "name" : "mS-DS-CreatorSID"},
+            { "type" : "int", "name" : "msDS-LastSuccessfulInteractiveLogonTime"},
+            { "type" : "str", "name" : "msDS-ResultantPSO"},
+            { "type" : "str", "name" : "msDS-SupportedEncryptionTypes"},
+            { "type" : "int", "name" : "msDS-User-Account-Control-Computed"},
+            { "type" : "int", "name" : "msTSAllowLogon"},
+            { "type" : "int", "name" : "pwdLastSet"},
+            { "type" : "int", "name" : "primaryGroupID"},
+            { "type" : "str", "name" : "otherLoginWorkstations"},
+            { "type" : "str", "name" : "servicePrincipalName"},
+            { "type" : "str", "name" : "scriptPath"},
+            { "type" : "str", "name" : "userWorkstations"},
+            { "type" : "str", "name" : "userParameters"},
+            { "type" : "str", "name" : "userPrincipalName"},
+            { "type" : "str", "name" : "userAccountControl"},
+            
+            { "type" : "bin", "name" : "msExchMailboxSecurityDescriptor"},
+        ]
+    }
+  },
+  
+  "managedAccount" : {
+    "descr" : "Dump AD managed accounts",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msDS-ManagedServiceAccount)",
+        "attrs" : [
+            { "type" : "str", "name" : "accountNameHistory"},
+            { "type" : "str", "name" : "altSecurityIdentities"},
+            { "type" : "int", "name" : "msDS-KeyVersionNumber"},
+            { "type" : "bin", "name" : "objectSid"},
+            { "type" : "str", "name" : "sAMAccountName"},
+            { "type" : "int", "name" : "sAMAccountType"},
+            { "type" : "bin", "name" : "sIDHistory"},
+            { "type" : "bin", "name" : "supplementalCredentials"},
+            
+            { "type" : "str", "name" : "info"},
+            
+            { "type" : "str", "name" : "memberOf"},
+            
+            { "type" : "int", "name" : "gidNumber"},
+            { "type" : "str", "name" : "loginShell"},
+            { "type" : "str", "name" : "uid"},
+            { "type" : "int", "name" : "uidNumber"},
+            { "type" : "str", "name" : "unixHomeDirectory"},
+            { "type" : "str", "name" : "unixUserPassword"},
+            
+            { "type" : "int", "name" : "shadowExpire"},
+            { "type" : "int", "name" : "shadowFlag"},
+            { "type" : "int", "name" : "shadowInactive"},
+            { "type" : "int", "name" : "shadowLastChange"},
+            { "type" : "int", "name" : "shadowMax"},
+            { "type" : "int", "name" : "shadowMin"},
+        
+            { "type" : "int", "name" : "accountExpires"},
+            { "type" : "int", "name" : "adminCount"},
+            { "type" : "int", "name" : "badPwdCount"},
+            { "type" : "bin", "name" : "controlAccessRights"},
+            { "type" : "str", "name" : "defaultClassStore"},
+            { "type" : "str", "name" : "homeDirectory"},
+            { "type" : "str", "name" : "homeDrive"},
+            { "type" : "int", "name" : "lastLogon"},
+            { "type" : "int", "name" : "lastLogonTimestamp"},
+            { "type" : "int", "name" : "lockoutTime"},
+            { "type" : "int", "name" : "logonCount"},
+            { "type" : "bin", "name" : "logonHours"},
+            { "type" : "str", "name" : "msDS-AuthenticatedAtDC"},
+            { "type" : "str", "name" : "msDS-AssignedAuthNPolicy"},
+            { "type" : "str", "name" : "msDS-AssignedAuthNPolicySilo"},
+            { "type" : "bin", "name" : "mS-DS-CreatorSID"},
+            { "type" : "int", "name" : "msDS-LastSuccessfulInteractiveLogonTime"},
+            { "type" : "str", "name" : "msDS-ResultantPSO"},
+            { "type" : "str", "name" : "msDS-SupportedEncryptionTypes"},
+            { "type" : "int", "name" : "msDS-User-Account-Control-Computed"},
+            { "type" : "int", "name" : "msTSAllowLogon"},
+            { "type" : "int", "name" : "pwdLastSet"},
+            { "type" : "int", "name" : "primaryGroupID"},
+            { "type" : "str", "name" : "otherLoginWorkstations"},
+            { "type" : "str", "name" : "servicePrincipalName"},
+            { "type" : "str", "name" : "scriptPath"},
+            { "type" : "str", "name" : "userWorkstations"},
+            { "type" : "str", "name" : "userParameters"},
+            { "type" : "str", "name" : "userPrincipalName"},
+            { "type" : "str", "name" : "userAccountControl"},
+        ]
+    }
+  },
+  
+  "organizationalPerson" : {
+    "descr" : "Dump AD Organizational-Person attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=organizationalPerson)",
+        "attrs" : [
+            { "type" : "bin", "name" : "msDS-AllowedToActOnBehalfOfOtherIdentity"},
+            { "type" : "str", "name" : "msDS-AllowedToDelegateTo"},
+            { "type" : "str", "name" : "comment"},
+            { "type" : "str", "name" : "userPassword"},
+        ]
+    }
+  },
+  
+  "computer" : {
+    "descr" : "Dump AD Computer attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(&(objectClass=computer)(!(objectClass=msDS-ManagedServiceAccount)))",
+        "attrs" : [
+            { "type" : "str", "name" : "ipHostNumber"},
+
+            { "type" : "int", "name" : "lastLogon"},
+            { "type" : "int", "name" : "lastLogonTimestamp"},
+            { "type" : "str", "name" : "defaultLocalPolicyObject"},
+            { "type" : "str", "name" : "dNSHostName"},
+            { "type" : "int", "name" : "localPolicyFlags"},
+            { "type" : "int", "name" : "machineRole"},
+            { "type" : "str", "name" : "managedBy"},
+            { "type" : "str", "name" : "msDS-AdditionalDnsHostName"},
+            { "type" : "str", "name" : "msDS-AdditionalSamAccountName"},
+            { "type" : "str", "name" : "msDS-HostServiceAccount"},
+            { "type" : "str", "name" : "msDS-isGC"},
+            { "type" : "str", "name" : "msDS-isRODC"},
+            { "type" : "str", "name" : "msDS-KrbTgtLink"},
+            { "type" : "str", "name" : "msDS-NeverRevealGroup"},
+            { "type" : "str", "name" : "msDS-RevealedList"},
+            { "type" : "str", "name" : "msDS-RevealedUsers"},
+            { "type" : "str", "name" : "msDS-RevealOnDemandGroup"},
+            { "type" : "str", "name" : "msDS-SiteName"},
+            { "type" : "bin", "name" : "msPKIDPAPIMasterKeys"},
+            { "type" : "str", "name" : "msTPM-OwnerInformation"},
+            { "type" : "str", "name" : "operatingSystem"},
+            { "type" : "str", "name" : "operatingSystemHotfix"},
+            { "type" : "str", "name" : "operatingSystemServicePack"},
+            { "type" : "str", "name" : "operatingSystemVersion"},
+            { "type" : "str", "name" : "userAccountControl"},
+            { "type" : "int", "name" : "policyReplicationFlags"},
+            { "type" : "bin", "name" : "siteGUID"},
+            { "type" : "int", "name" : "pwdLastSet"},
+            { "type" : "bin", "name" : "sIDHistory"},
+            
+            { "type" : "str", "name" : "ms-MCS-AdmPwd"},
+            { "type" : "int", "name" : "ms-MCS-AdmPwdExpirationTime"},
+        ]
+    }
+  },
+  
+  "group" : {
+    "descr" : "Dump AD Group attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=group)",
+        "attrs" : [
+            { "type" : "str", "name" : "accountNameHistory"},
+            { "type" : "str", "name" : "altSecurityIdentities"},
+            { "type" : "int", "name" : "msDS-KeyVersionNumber"},
+            { "type" : "str", "name" : "sAMAccountName"},
+            { "type" : "int", "name" : "sAMAccountType"},
+            { "type" : "bin", "name" : "sIDHistory"},
+            { "type" : "bin", "name" : "supplementalCredentials"},
+            
+            { "type" : "str", "name" : "info"},
+            { "type" : "bin", "name" : "objectSid"},
+            
+            { "type" : "int", "name" : "gidNumber"},
+            { "type" : "str", "name" : "memberUid"},
+            { "type" : "str", "name" : "userPassword"},
+            { "type" : "str", "name" : "unixUserPassword"},
+        
+            { "type" : "int", "name" : "adminCount"},
+            { "type" : "bin", "name" : "controlAccessRights"},
+            { "type" : "int", "name" : "groupType"},
+            { "type" : "str", "name" : "managedBy"},
+            { "type" : "str", "name" : "member"},
+        ]
+    }
+  },
+
+  "foreignSecurityPrincipal" : {
+    "descr" : "Dump foreign and well-known security principals attributes",
+    "ldap" : {
+        "base" : "*",
+        "scope" : "subtree",
+        "filter" : "(objectClass=foreignSecurityPrincipal)",
+        "attrs" : [
+            { "type" : "bin", "name" : "foreignIdentifier"},
+            { "type" : "bin", "name" : "objectSid"},
+            ]
+        }
+  },
+  
+  "organizationalUnit" : {
+    "descr" : "Dump AD OU attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=OrganizationalUnit)",
+        "attrs" : [
+            { "type" : "str", "name" : "gPLink"},
+            { "type" : "int", "name" : "gPOptions"},
+            { "type" : "str", "name" : "managedBy"},
+            { "type" : "str", "name" : "ou"},
+            ]
+        }
+  },
+  
+  "groupPolicyContainer" : {
+    "descr" : "Dump AD GPO",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=groupPolicyContainer)",
+        "attrs" : [
+            { "type" : "str", "name" : "gPCFileSysPath"},
+            { "type" : "int", "name" : "gPCFunctionalityVersion"},
+            { "type" : "str", "name" : "gPCMachineExtensionNames"},
+            { "type" : "str", "name" : "gPCUserExtensionNames"},
+            { "type" : "str", "name" : "gPCWQLFilter"},
+            { "type" : "int", "name" : "versionNumber"},
+            { "type" : "int", "name" : "flags"},
+            { "type" : "str", "name" : "displayName"},
+            { "type" : "bin", "name" : "nTSecurityDescriptor"},
+            { "type" : "str", "name" : "whenCreated"},
+            { "type" : "str", "name" : "whenChanged"},
+            ]
+        }
+  },
+  
+  "msWMI-Som" : {
+    "descr" : "Dump WMI filters",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msWMI-Som)",
+        "attrs" : [
+            { "type" : "str", "name" : "msWMI-Author"},
+            { "type" : "str", "name" : "msWMI-ChangeDate"},
+            { "type" : "str", "name" : "msWMI-CreationDate"},
+            { "type" : "str", "name" : "msWMI-ID"},
+            { "type" : "int", "name" : "msWMI-intFlags1"},
+            { "type" : "int", "name" : "msWMI-intFlags2"},
+            { "type" : "int", "name" : "msWMI-intFlags3"},
+            { "type" : "int", "name" : "msWMI-intFlags4"},
+            { "type" : "str", "name" : "msWMI-Name"},
+            { "type" : "str", "name" : "msWMI-Parm1"},
+            { "type" : "str", "name" : "msWMI-Parm2"},
+            { "type" : "str", "name" : "msWMI-Parm3"},
+            { "type" : "str", "name" : "msWMI-Parm4"},
+            ]
+        }
+  },
+  
+  
+  "trustedDomain" : {
+    "descr" : "Dump AD trust attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=trustedDomain)",
+        "attrs" : [
+            { "type" : "bin", "name" : "domainIdentifier"},
+            { "type" : "str", "name" : "flatName"},
+            { "type" : "str", "name" : "msDS-EgressClaimsTransformationPolicy"},
+            { "type" : "str", "name" : "msDS-IngressClaimsTransformationPolicy"},
+            { "type" : "str", "name" : "msDS-SupportedEncryptionTypes"},
+            { "type" : "bin", "name" : "msDS-TrustForestTrustInfo"},
+            { "type" : "bin", "name" : "securityIdentifier"},
+            { "type" : "int", "name" : "trustAttributes"},
+            { "type" : "int", "name" : "trustDirection"},
+            { "type" : "str", "name" : "trustPartner"},
+            { "type" : "int", "name" : "trustPosixOffset"},
+            { "type" : "int", "name" : "trustType"},
+            ]
+        }
+  },
+  
+  "msFVE-RecoveryInformation" : {
+    "descr" : "Dump msFVE-RecoveryInformation attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msFVE-RecoveryInformation)",
+        "attrs" : [
+            { "type" : "bin", "name" : "msFVE-KeyPackage"},
+            { "type" : "bin", "name" : "msFVE-RecoveryGuid"},
+            { "type" : "str", "name" : "msFVE-RecoveryPassword"},
+            { "type" : "bin", "name" : "msFVE-VolumeGuid"},
+            ]
+        }
+  },
+  
+  "msTPM-InformationObject" : {
+    "descr" : "Dump msTPM-InformationObject attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msTPM-InformationObject)",
+        "attrs" : [
+            { "type" : "str", "name" : "msTPM-OwnerInformation"},
+            { "type" : "str", "name" : "msTPM-OwnerInformationTemp"},
+            { "type" : "bin", "name" : "msTPM-SrkPubThumbprint"},
+            ]
+        }
+  },
+  
+  "secret" : {
+    "descr" : "Dump secret attributes (no values)",
+    "ldap" : {
+        "base" : "*",
+        "scope" : "subtree",
+        "filter" : "(objectClass=secret)",
+        "attrs" : [
+            { "type" : "int", "name" : "lastSetTime"},
+            { "type" : "int", "name" : "priorSetTime"},
+            ]
+        }
+  }, 
+
+  "classStore" : {
+    "descr" : "Dump classStore attributes (COM)",
+    "ldap" : {
+        "base" : "*",
+        "scope" : "subtree",
+        "filter" : "(objectClass=classStore)",
+        "attrs" : [
+            { "type" : "int", "name" : "appSchemaVersion"},
+            { "type" : "str", "name" : "lastUpdateSequence"},
+            { "type" : "str", "name" : "nextLevelStore"},
+            { "type" : "int", "name" : "versionNumber"},
+            ]
+        }
+  },
+  
+  "infrastructureUpdate" : {
+    "descr" : "Dump infrastructureUpdate attributes",
+    "ldap" : {
+        "base" : "*",
+        "scope" : "subtree",
+        "filter" : "(objectClass=infrastructureUpdate)",
+        "attrs" : [
+            { "type" : "str", "name" : "dNReferenceUpdate"},
+            ]
+        }
+  },
+  
+  "msExchExchangeServer" : {
+    "descr" : "Dump Exchange server attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msExchExchangeServer)",
+        "attrs" : [
+            { "type" : "int", "name" : "msExchVersion"},
+            { "type" : "int", "name" : "msExchCurrentServerRoles"},
+            ]
+        }
+  },
+  
+  "domainDNS" : {
+    "descr" : "Dump DomainDNS (domain and DNS NCs) attributes",
+    "ldap" : {
+        "base" : "*",
+        "scope" : "subtree",
+        "filter" : "(objectClass=domainDNS)",
+        "attrs" : [
+            { "type" : "int", "name" : "creationTime"},
+            { "type" : "str", "name" : "domainReplica"},
+            { "type" : "int", "name" : "forceLogoff"},
+            { "type" : "int", "name" : "lockoutDuration"},
+            { "type" : "int", "name" : "lockOutObservationWindow"},
+            { "type" : "int", "name" : "lockoutThreshold"},
+            { "type" : "int", "name" : "maxPwdAge"},
+            { "type" : "int", "name" : "minPwdAge"},
+            { "type" : "int", "name" : "minPwdLength"},
+            { "type" : "bin", "name" : "objectSid"},
+            { "type" : "int", "name" : "pwdHistoryLength"},
+            { "type" : "int", "name" : "pwdProperties"},
+            { "type" : "int", "name" : "serverRole"},
+            { "type" : "int", "name" : "serverState"},
+            
+            { "type" : "str", "name" : "auditingPolicy"},
+            { "type" : "int", "name" : "builtinCreationTime"},
+            { "type" : "bin", "name" : "cACertificate"},
+            { "type" : "bin", "name" : "controlAccessRights"},
+            { "type" : "bin", "name" : "defaultLocalPolicyObject"},
+            { "type" : "str", "name" : "domainPolicyObject"},
+            { "type" : "bin", "name" : "eFSPolicy"},
+            { "type" : "str", "name" : "gPLink"},
+            { "type" : "int", "name" : "gPOptions"},
+            { "type" : "int", "name" : "msDS-AllUsersTrustQuota"},
+            { "type" : "int", "name" : "ms-DS-MachineAccountQuota"},
+            { "type" : "int", "name" : "msDS-PerUserTrustQuota"},
+            { "type" : "int", "name" : "msDS-PerUserTrustTombstonesQuota"},
+            { "type" : "str", "name" : "nETBIOSName"},
+            { "type" : "str", "name" : "nTMixedDomain"},
+            { "type" : "int", "name" : "pekKeyChangeInterval"},
+            { "type" : "bin", "name" : "privateKey"},
+            { "type" : "bin", "name" : "treeName"},
+            
+            { "type" : "str", "name" : "dc"},
+            
+            { "type" : "str", "name" : "managedBy"},
+            { "type" : "str", "name" : "msDS-AllowedDNSSuffixes"},
+            { "type" : "str", "name" : "msDS-Behavior-Version"},
+            { "type" : "str", "name" : "msDS-EnabledFeature"},
+            { "type" : "int", "name" : "msDS-USNLastSyncSuccess"},
+            ]
+        }
+  },
+  
+  "builtinDomain" : {
+    "descr" : "Dump builtinDomain attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=builtinDomain)",
+        "attrs" : [
+            { "type" : "int", "name" : "creationTime"},
+            { "type" : "str", "name" : "domainReplica"},
+            { "type" : "int", "name" : "forceLogoff"},
+            { "type" : "int", "name" : "lockoutDuration"},
+            { "type" : "int", "name" : "lockOutObservationWindow"},
+            { "type" : "int", "name" : "lockoutThreshold"},
+            { "type" : "int", "name" : "maxPwdAge"},
+            { "type" : "int", "name" : "minPwdAge"},
+            { "type" : "int", "name" : "minPwdLength"},
+            { "type" : "bin", "name" : "objectSid"},
+            { "type" : "int", "name" : "pwdHistoryLength"},
+            { "type" : "int", "name" : "pwdProperties"},
+            { "type" : "int", "name" : "serverRole"},
+            { "type" : "int", "name" : "serverState"},
+            ]
+        }
+  },
+  
+  "samServer" : {
+    "descr" : "Dump samServer attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=samServer)",
+        "attrs" : [
+            { "type" : "str", "name" : "samDomainUpdates"},
+            ]
+        }
+  },
+  
+  "domainPolicy" : {
+    "descr" : "Dump Domain Policy attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=domainPolicy)",
+        "attrs" : [
+            { "type" : "int", "name" : "authenticationOptions"},
+            { "type" : "str", "name" : "defaultLocalPolicyObject"},
+            { "type" : "str", "name" : "domainCAs"},
+            { "type" : "str", "name" : "domainPolicyReference"},
+            { "type" : "bin", "name" : "eFSPolicy"},
+            { "type" : "int", "name" : "forceLogoff"},
+            { "type" : "int", "name" : "lockoutDuration"},
+            { "type" : "int", "name" : "lockOutObservationWindow"},
+            { "type" : "int", "name" : "lockoutThreshold"},
+            { "type" : "str", "name" : "managedBy"},
+            { "type" : "int", "name" : "maxPwdAge"},
+            { "type" : "int", "name" : "maxRenewAge"},
+            { "type" : "int", "name" : "maxTicketAge"},
+            { "type" : "int", "name" : "minPwdAge"},
+            { "type" : "int", "name" : "minPwdLength"},
+            { "type" : "int", "name" : "minTicketAge"},
+            { "type" : "str", "name" : "publicKeyPolicy"},
+            { "type" : "int", "name" : "pwdHistoryLength"},
+            { "type" : "int", "name" : "pwdProperties"},
+            ]
+        }
+  },
+  
+  "msDS-PasswordSettings" : {
+    "descr" : "Dump PSO attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msDS-PasswordSettings)",
+        "attrs" : [
+            { "type" : "int", "name" : "msDS-LockoutDuration"},
+            { "type" : "int", "name" : "msDS-LockoutObservationWindow"},
+            { "type" : "int", "name" : "msDS-LockoutThreshold"},
+            { "type" : "int", "name" : "msDS-MaximumPasswordAge"},
+            { "type" : "int", "name" : "msDS-MinimumPasswordAge"},
+            { "type" : "int", "name" : "msDS-MinimumPasswordLength"},
+            { "type" : "str", "name" : "msDS-PasswordComplexityEnabled"},
+            { "type" : "int", "name" : "msDS-PasswordHistoryLength"},
+            { "type" : "str", "name" : "msDS-PasswordReversibleEncryptionEnabled"},
+            { "type" : "int", "name" : "msDS-PasswordSettingsPrecedence"},
+            { "type" : "str", "name" : "msDS-PSOAppliesTo"},
+            ]
+        }
+  },
+  
+  "msDS-GroupManagedServiceAccount" : {
+    "descr" : "Dump Managed Service Accounts attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msDS-GroupManagedServiceAccount)",
+        "attrs" : [
+            { "type" : "bin", "name" : "msDS-GroupMSAMembership"},
+            { "type" : "bin", "name" : "msDS-ManagedPassword"},
+            { "type" : "str", "name" : "msDS-ManagedPasswordId"},
+            { "type" : "int", "name" : "msDS-ManagedPasswordInterval"},
+            { "type" : "str", "name" : "msDS-ManagedPasswordPreviousId"},
+            ]
+        }
+  },
+  
+  "certificationAuthority" : {
+    "descr" : "Dump CA attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=certificationAuthority)",
+        "attrs" : [
+            { "type" : "str", "name" : "authorityRevocationList"},
+            { "type" : "bin", "name" : "cACertificate"},
+            { "type" : "str", "name" : "cACertificateDN"},
+            { "type" : "str", "name" : "cAConnect"},
+            { "type" : "str", "name" : "cAUsages"},
+            { "type" : "str", "name" : "cAWEBURL"},
+            { "type" : "str", "name" : "certificateRevocationList"},
+            { "type" : "str", "name" : "cRLObject"},
+            { "type" : "str", "name" : "currentParentCA"},
+            { "type" : "str", "name" : "deltaRevocationList"},
+            { "type" : "str", "name" : "dNSHostName"},
+            { "type" : "str", "name" : "domainID"},
+            { "type" : "str", "name" : "domainPolicyObject"},
+            { "type" : "str", "name" : "enrollmentProviders"},
+            { "type" : "str", "name" : "parentCA"},
+            { "type" : "str", "name" : "parentCACertificateChain"},
+            { "type" : "str", "name" : "pendingCACertificates"},
+            { "type" : "str", "name" : "pendingParentCA"},
+            { "type" : "str", "name" : "previousCACertificates"},
+            { "type" : "str", "name" : "previousParentCA"},
+            { "type" : "str", "name" : "signatureAlgorithms"},
+            { "type" : "str", "name" : "supportedApplicationContext"},
+            ]
+        }
+  },
+  
+  "nTDSService" : {
+    "descr" : "Dump ADDS Service configuation",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=nTDSService)",
+        "attrs" : [
+            { "type" : "str", "name" : "name"},
+            { "type" : "str", "name" : "dSHeuristics"},
+            { "type" : "str", "name" : "adminDescription"},
+            { "type" : "str", "name" : "adminDisplayName"},
+            { "type" : "str", "name" : "description"},
+            { "type" : "str", "name" : "displayName"},
+            { "type" : "int", "name" : "flags"},
+            { "type" : "str", "name" : "fSMORoleOwner"},
+            { "type" : "int", "name" : "garbageCollPeriod"},
+            { "type" : "int", "name" : "instanceType"},
+            { "type" : "str", "name" : "msDS-Other-Settings"},
+            { "type" : "str", "name" : "sPNMappings"},
+            { "type" : "int", "name" : "tombstoneLifetime"},
+            { "type" : "str", "name" : "whenCreated"},
+            { "type" : "str", "name" : "whenChanged"},
+            ]
+        }
+  },
+  
+  "configuration" : {
+    "descr" : "Dump configuration (the config NC) attributes",
+    "ldap" : {
+        "base" : "*",
+        "scope" : "subtree",
+        "filter" : "(objectClass=configuration)",
+        "attrs" : [
+            { "type" : "str", "name" : "gPLink"},
+            { "type" : "int", "name" : "gPOptions"},
+            { "type" : "int", "name" : "msDS-USNLastSyncSuccess"},
+            ]
+        }
+  },
+  
+  "dMD" : {
+    "descr" : "Dump DMD (the schema NC) attributes",
+    "ldap" : {
+        "base" : "*",
+        "scope" : "subtree",
+        "filter" : "(objectClass=dMD)",
+        "attrs" : [
+            { "type" : "str", "name" : "dmdName"},
+            { "type" : "int", "name" : "msDS-IntId"},
+            { "type" : "bin", "name" : "msDs-Schema-Extensions"},
+            { "type" : "int", "name" : "msDS-USNLastSyncSuccess"},
+            { "type" : "bin", "name" : "schemaInfo"},
+            { "type" : "bin", "name" : "schemaUpdate"},
+            ]
+        }
+  },
+  
+  "nTDSDSA" : {
+    "descr" : "Dump AD DC attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=nTDSDSA)",
+        "attrs" : [
+            { "type" : "int", "name" : "lastBackupRestorationTime"},
+            { "type" : "str", "name" : "managedBy"},
+            { "type" : "int", "name" : "msDS-Behavior-Version"},
+            { "type" : "str", "name" : "msDS-EnabledFeature"},
+            { "type" : "str", "name" : "msDS-isGC"},
+            { "type" : "str", "name" : "msDS-isRODC"},
+            { "type" : "str", "name" : "msDS-IsUserCachableAtRodc"},
+            { "type" : "str", "name" : "msDS-NeverRevealGroup"},
+            { "type" : "str", "name" : "msDS-ReplicationEpoch"},
+            { "type" : "str", "name" : "msDS-RevealedUsers"},
+            { "type" : "str", "name" : "msDS-RevealOnDemandGroup"},
+            { "type" : "str", "name" : "msDS-SiteName"},
+            { "type" : "str", "name" : "msDS-HasDomainNCs"},
+            { "type" : "str", "name" : "options"},
+            { "type" : "str", "name" : "serverReference"},
+            ]
+        }
+  },
+  
+  "server" : {
+    "descr" : "Dump AD Servers (DC) attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=server)",
+        "attrs" : [
+            { "type" : "str", "name" : "dNSHostName"},
+            { "type" : "str", "name" : "managedBy"},
+            { "type" : "str", "name" : "msDS-isGC"},
+            { "type" : "str", "name" : "msDS-isRODC"},
+            { "type" : "str", "name" : "msDS-SiteName"},
+            { "type" : "str", "name" : "serverReference"},
+            ]
+        }
+  },
+  
+  "site" : {
+    "descr" : "Dump AD Sites attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=site)",
+        "attrs" : [
+            { "type" : "str", "name" : "name"},
+            { "type" : "str", "name" : "siteObjectBL"},
+            { "type" : "str", "name" : "gPLink"},
+            { "type" : "int", "name" : "gPOptions"},
+            { "type" : "str", "name" : "managedBy"},
+            ]
+        }
+  },
+  
+  "siteLinkBridge" : {
+    "descr" : "Dump AD Site-Link-Bridge attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=siteLinkBridge)",
+        "attrs" : [
+            { "type" : "str", "name" : "siteLinkList"},
+            ]
+        }
+  },
+  
+  "siteLink" : {
+    "descr" : "Dump AD Site-Link attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=siteLink)",
+        "attrs" : [
+            { "type" : "str", "name" : "name"},
+            { "type" : "int", "name" : "options"},
+            { "type" : "str", "name" : "siteList"},
+            ]
+        }
+  },
+ 
+  "subnet" : {
+    "descr" : "Dump AD Subnet attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=subnet)",
+        "attrs" : [
+            { "type" : "str", "name" : "location"},
+            { "type" : "str", "name" : "physicalLocationObject"},
+            { "type" : "str", "name" : "siteObject"},
+            ]
+        }
+  },
+  
+  "controlAccessRight" : {
+    "descr" : "Dump controlAccessRight (extended rights, property sets, etc.) attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=controlAccessRight)",
+        "attrs" : [
+            { "type" : "str", "name" : "appliesTo"},
+            { "type" : "int", "name" : "localizationDisplayId"},
+            { "type" : "str", "name" : "rightsGuid"},
+            { "type" : "int", "name" : "validAccesses"},
+            ]
+        }
+  },
+  
+  "msDS-ClaimTypePropertyBase" : {
+    "descr" : "Dump AD msDS-ClaimTypePropertyBase attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msDS-ClaimTypePropertyBase)",
+        "attrs" : [            
+            { "type" : "str", "name" : "Enabled"},
+            { "type" : "str", "name" : "msDS-ClaimPossibleValues"},
+            { "type" : "str", "name" : "msDS-ClaimSharesPossibleValuesWith"},
+            ]
+        }
+  },
+  
+  "msDS-ClaimType" : {
+    "descr" : "Dump AD msDS-ClaimType attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msDS-ClaimType)",
+        "attrs" : [            
+            { "type" : "str", "name" : "msDS-ClaimAttributeSource"},
+            { "type" : "str", "name" : "msDS-ClaimIsSingleValued"},
+            { "type" : "str", "name" : "msDS-ClaimIsValueSpaceRestricted"},
+            { "type" : "str", "name" : "msDS-ClaimSource"},
+            { "type" : "str", "name" : "msDS-ClaimSourceType"},
+            { "type" : "str", "name" : "msDS-ClaimTypeAppliesToClass"},
+            { "type" : "str", "name" : "msDS-ClaimValueType"},
+            ]
+        }
+  },
+  
+  "msDS-ClaimsTransformationPolicyType" : {
+    "descr" : "Dump AD msDS-ClaimsTransformationPolicyType attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msDS-ClaimsTransformationPolicyType)",
+        "attrs" : [
+            { "type" : "str", "name" : "msDS-TransformationRules"},
+            { "type" : "bin", "name" : "msDS-TransformationRulesCompiled"},
+            ]
+        }
+  },
+
+  "msDS-ResourceProperty" : {
+    "descr" : "Dump AD msDS-ResourceProperty attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msDS-ResourceProperty)",
+        "attrs" : [
+            { "type" : "str", "name" : "msDS-AppliesToResourceTypes"},
+            { "type" : "str", "name" : "msDS-IsUsedAsResourceSecurityAttribute"},
+            { "type" : "str", "name" : "msDS-ValueTypeReference"},
+            ]
+        }
+  },
+  
+  "msDS-ResourcePropertyList" : {
+    "descr" : "Dump AD msDS-ResourcePropertyList attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msDS-ResourcePropertyList)",
+        "attrs" : [
+            { "type" : "str", "name" : "msDS-MembersOfResourcePropertyList"},
+            ]
+        }
+  },
+  
+  "msAuthz-CentralAccessPolicy" : {
+    "descr" : "Dump AD msAuthz-CentralAccessPolicy attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msAuthz-CentralAccessPolicy)",
+        "attrs" : [
+            { "type" : "bin", "name" : "msAuthz-CentralAccessPolicyID"},
+            { "type" : "str", "name" : "msAuthz-MemberRulesInCentralAccessPolicy"},
+            ]
+        }
+  },
+  
+  "msAuthz-CentralAccessRule" : {
+    "descr" : "Dump AD msAuthz-CentralAccessRule attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msAuthz-CentralAccessRule)",
+        "attrs" : [
+            { "type" : "str", "name" : "Enabled"},
+            { "type" : "str", "name" : "msAuthz-EffectiveSecurityPolicy"},
+            { "type" : "str", "name" : "msAuthz-LastEffectiveSecurityPolicy"},
+            { "type" : "str", "name" : "msAuthz-ProposedSecurityPolicy"},
+            { "type" : "str", "name" : "msAuthz-ResourceCondition"},
+            ]
+        }
+  },
+  
+  "msDS-AuthNPolicy" : {
+    "descr" : "Dump AD msDS-AuthNPolicy attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msDS-AuthNPolicy)",
+        "attrs" : [
+            { "type" : "str", "name" : "msDS-UserAllowedToAuthenticateTo"},
+            { "type" : "str", "name" : "msDS-UserAllowedToAuthenticateFrom"},
+            { "type" : "int", "name" : "msDS-UserTGTLifetime"},
+            { "type" : "str", "name" : "msDS-ComputerAllowedToAuthenticateTo"},
+            { "type" : "int", "name" : "msDS-ComputerTGTLifetime"},
+            { "type" : "str", "name" : "msDS-ServiceAllowedToAuthenticateTo"},
+            { "type" : "str", "name" : "msDS-ServiceAllowedToAuthenticateFrom"},
+            { "type" : "int", "name" : "msDS-ServiceTGTLifetime"},
+            { "type" : "str", "name" : "msDS-AuthNPolicyEnforced"},
+            ]
+        }
+  },
+  
+  "msDS-AuthNPolicySilo" : {
+    "descr" : "Dump AD msDS-AuthNPolicySilo attributes",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msDS-AuthNPolicySilo)",
+        "attrs" : [
+            { "type" : "str", "name" : "msDS-AuthNPolicySiloMembers"},
+            { "type" : "str", "name" : "msDS-UserAuthNPolicy"},
+            { "type" : "str", "name" : "msDS-ComputerAuthNPolicy"},
+            { "type" : "str", "name" : "msDS-ServiceAuthNPolicy"},
+            { "type" : "str", "name" : "msDS-AuthNPolicySiloEnforced"},
+            ]
+        }
+  },
+  
+  "subSchema" : {
+    "descr" : "Dump subSchema attributes",
+    "ldap" : {
+        "base" : "schema",
+        "scope" : "subtree",
+        "filter" : "(objectClass=subSchema)",
+        "attrs" : [
+            { "type" : "str", "name" : "attributeTypes"},
+            { "type" : "str", "name" : "dITContentRules"},
+            { "type" : "str", "name" : "extendedAttributeInfo"},
+            { "type" : "str", "name" : "extendedClassInfo"},
+            { "type" : "str", "name" : "objectClasses"},
+            ]
+        }
+  },
+  
+  "dnsZone" : {
+    "descr" : "Dump dnsZone (Domain and Forest) attributes",
+    "ldap" : {
+        "base" : "*",
+        "scope" : "subtree",
+        "filter" : "(objectClass=dnsZone)",
+        "attrs" : [
+            { "type" : "bin", "name" : "dNSProperty"},
+            { "type" : "str", "name" : "dc"},
+            { "type" : "str", "name" : "managedBy"},
+            { "type" : "bin", "name" : "msDNS-DNSKEYRecords"},
+            { "type" : "str", "name" : "msDNS-DSRecordAlgorithms"},
+            { "type" : "str", "name" : "msDNS-IsSigned"},
+            { "type" : "str", "name" : "msDNS-ParentHasSecureDelegation"},
+            { "type" : "bin", "name" : "msDNS-SigningKeyDescriptors"},
+            { "type" : "bin", "name" : "msDNS-SigningKeys"},
+            { "type" : "str", "name" : "msDNS-SignWithNSEC3"},
+            ]
+        }
+  },
+  
+  "dnsNode" : {
+    "descr" : "Dump dnsNode (Domain and Forest) attributes",
+    "ldap" : {
+        "base" : "*",
+        "scope" : "subtree",
+        "filter" : "(objectClass=dnsNode)",
+        "attrs" : [
+            { "type" : "bin", "name" : "dNSProperty"},
+            { "type" : "bin", "name" : "dnsRecord"},
+            { "type" : "str", "name" : "dNSTombstoned"},
+            { "type" : "str", "name" : "dc"},
+            ]
+        }
+  },
+  
+  "classSchema" : {
+    "descr" : "Dump AD schema class",
+    "ldap" : {
+        "base" : "schema",
+        "scope" : "subtree",
+        "filter" : "(objectClass=classSchema)",
+        "attrs" : [
+            { "type" : "str", "name" : "auxiliaryClass"},
+            { "type" : "str", "name" : "classDisplayName"},
+            { "type" : "str", "name" : "defaultObjectCategory"},
+            { "type" : "str", "name" : "defaultSecurityDescriptor"},
+            { "type" : "bin", "name" : "governsID"},
+            { "type" : "str", "name" : "isDefunct"},
+            { "type" : "str", "name" : "lDAPDisplayName"},
+            { "type" : "str", "name" : "mayContain"},
+            { "type" : "int", "name" : "msDS-IntId"},
+            { "type" : "bin", "name" : "msDs-Schema-Extensions"},
+            { "type" : "str", "name" : "mustContain"},
+            { "type" : "int", "name" : "objectClassCategory"},
+            { "type" : "str", "name" : "possSuperiors"},
+            { "type" : "bin", "name" : "schemaIDGUID"},
+            { "type" : "str", "name" : "subClassOf"},
+            { "type" : "str", "name" : "systemAuxiliaryClass"},
+            { "type" : "str", "name" : "systemMayContain"},
+            { "type" : "str", "name" : "systemMustContain"},
+            { "type" : "str", "name" : "systemOnly"},
+            { "type" : "str", "name" : "systemPossSuperiors"},
+            ]
+        }
+  },
+  
+  "attributeSchema" : {
+    "descr" : "Dump AD schema attributes",
+    "ldap" : {
+        "base" : "schema",
+        "scope" : "subtree",
+        "filter" : "(objectClass=attributeSchema)",
+        "attrs" : [
+            { "type" : "str", "name" : "attributeID"},
+            { "type" : "bin", "name" : "attributeSecurityGUID"},
+            { "type" : "str", "name" : "attributeSyntax"},
+            { "type" : "str", "name" : "classDisplayName"},
+            { "type" : "str", "name" : "extendedCharsAllowed"},
+            { "type" : "str", "name" : "isDefunct"},
+            { "type" : "str", "name" : "isEphemeral"},
+            { "type" : "str", "name" : "isMemberOfPartialAttributeSet"},
+            { "type" : "str", "name" : "isSingleValued"},
+            { "type" : "str", "name" : "lDAPDisplayName"},
+            { "type" : "int", "name" : "msDS-IntId"},
+            { "type" : "bin", "name" : "msDs-Schema-Extensions"},
+            { "type" : "bin", "name" : "schemaIDGUID"},
+            { "type" : "int", "name" : "searchFlags"},
+            { "type" : "str", "name" : "systemOnly"},
+            ]
+        }
+  },
+
+  "adminSDHolder" : {
+    "descr" : "Dump AdminSDHolder attributes",
+    "ldap" : {
+        "base" : "domain",
+        "scope" : "subtree",
+        "filter" : "(&(objectClass=container)(cn=AdminSDHolder))",
+        "attrs" : [
+            { "type" : "str", "name" : "name"},
+            { "type" : "int", "name" : "uSNChanged"},
+            { "type" : "int", "name" : "uSNCreated"},
+            { "type" : "str", "name" : "whenCreated"},
+            { "type" : "str", "name" : "whenChanged"},
+            { "type" : "bin", "name" : "nTSecurityDescriptor"},
+            ]
+        }
+  },
+
+}

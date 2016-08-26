@@ -1,0 +1,54 @@
+{ "ace" : {
+    "descr" : "Dump all LDAP objects SD",
+    "ldap" : {
+        "base" : "*",
+        "scope" : "subtree",
+        "filter" : "(objectClass=*)",
+        "attrs" : [
+            { "type" : "bin", "name" : "nTSecurityDescriptor"},
+        ],
+        "controls" : [
+            { "name" : "LDAP_SERVER_SD_FLAGS_OID", 
+              "ctrltype" : "server",
+              "valuetype" : "int",
+              "value" : "5",
+              "oid" : "1.2.840.113556.1.4.801" }
+        ]
+    }
+  },
+  
+  "obj" : {
+    "descr" : "Dump all LDAP objects",
+    "ldap" : {
+        "base" : "*",
+        "scope" : "subtree",
+        "filter" : "(objectClass=*)",
+        "attrs" : [
+            { "type" : "str", "name" : "objectClass"},
+            { "type" : "bin", "name" : "objectSid"},
+            { "type" : "int", "name" : "adminCount"},
+			{ "type" : "str", "name" : "member"},
+			{ "type" : "str", "name" : "gPLink"},
+			{ "type" : "int", "name" : "primaryGroupID"},
+			{ "type" : "bin", "name" : "sIDHistory"},
+			{ "type" : "str", "name" : "cn"},
+        ]
+    }
+  },
+  
+  "sch" : {
+    "descr" : "Dump all Schema objects",
+    "ldap" : {
+        "base" : "schema",
+        "scope" : "subtree",
+        "filter" : "(objectClass=*)",
+        "attrs" : [
+            { "type" : "bin", "name" : "schemaIDGUID"},
+            { "type" : "str", "name" : "governsID"},
+            { "type" : "str", "name" : "defaultSecurityDescriptor"},
+            { "type" : "str", "name" : "lDAPDisplayName"},
+        ]
+    }
+  },
+}
+

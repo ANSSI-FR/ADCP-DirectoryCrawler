@@ -32,6 +32,9 @@
 			{ "type" : "int", "name" : "primaryGroupID"},
 			{ "type" : "bin", "name" : "sIDHistory"},
 			{ "type" : "str", "name" : "cn"},
+      { "type" : "str", "name" : "managedBy"},
+      { "type" : "str", "name" : "msDS-RevealOnDemandGroup"},
+      { "type" : "str", "name" : "msDS-NeverRevealGroup"},
         ]
     }
   },

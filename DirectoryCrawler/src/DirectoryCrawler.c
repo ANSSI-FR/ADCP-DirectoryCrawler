@@ -147,10 +147,10 @@ static void DirCrawlerSetDefaultPrefix(
     _In_ const PLDAP_ROOT_DSE pRootDse
     ) {
     static TCHAR s_atDefaultPrefix[3] = { 0 };
-    PTCHAR ptDomDnsName = pRootDse->extracted.ptLdapServiceName != NULL ? pRootDse->extracted.ptLdapServiceName : pOpt->ldap.ptDnsName;
+    PTCHAR ptDomDnsName = pOpt->ldap.ptDnsName != NULL ? pOpt->ldap.ptDnsName : pRootDse->extracted.ptLdapServiceName;
 
     if (ptDomDnsName == NULL) {
-        FATAL(_T("Failed to automatically retreive domain DNS name, and none was explicitely specified"));
+        FATAL(_T("Failed to automatically retrieve domain DNS name, and none was explicitely specified"));
     }
 
     s_atDefaultPrefix[0] = (TCHAR)_totupper(ptDomDnsName[0]);
@@ -169,7 +169,7 @@ PTCHAR DirCrawlerComputeOutputRootFolderName(
    PTCHAR tDomainFQDN = gs_sOptions.ldap.ptDnsName;
 
    if (tDomainFQDN == NULL) {
-      FATAL(_T("Unable to retrive DNS domain name. Please provide it in the cmdline."));
+      FATAL(_T("Unable to retrieve DNS domain name. Please provide it in the cmdline."));
    }
 
    GetSystemTime(&sSystemTime);

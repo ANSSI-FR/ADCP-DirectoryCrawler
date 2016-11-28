@@ -717,6 +717,7 @@ int _tmain(
     // Variables
     //
     BOOL bResult = FALSE;
+	BOOL globalSuccess = FALSE;
     DWORD dwResult = 0;
     DWORD i = 0;
     DWORD dwSentReqCount = 0;
@@ -934,7 +935,9 @@ int _tmain(
         dwSentReqCount,
         TIME_DIFF_SEC(ullTimeStart, GetTickCount64()));
 
-
+	if (dwSentReqCount - (*gs_plSucceededRequestsCount) == 0) {
+		globalSuccess = TRUE;
+	}
     //
     // Cleanup & exit
     //
@@ -954,5 +957,11 @@ int _tmain(
     _aligned_free(gs_pReqListHead);
 
     LOG(Succ, _T("Exit."));
-    return EXIT_SUCCESS;
+
+	if (globalSuccess) {
+		return EXIT_SUCCESS;
+	}
+	else {
+		return EXIT_FAILURE;
+	}
 }

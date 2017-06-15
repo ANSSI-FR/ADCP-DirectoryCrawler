@@ -17,6 +17,44 @@
     }
   },
   
+  "mbxsd" : {
+    "descr" : "Dump Exchange Mailbox SD",
+    "ldap" : {
+        "base" : "*",
+        "scope" : "subtree",
+        "filter" : "(objectClass=*)",
+        "attrs" : [
+            { "type" : "bin", "name" : "msExchMailboxSecurityDescriptor"},
+        ],
+        "controls" : [
+            { "name" : "LDAP_SERVER_SD_FLAGS_OID", 
+              "ctrltype" : "server",
+              "valuetype" : "int",
+              "value" : "5",
+              "oid" : "1.2.840.113556.1.4.801" }
+        ]
+    }
+  },
+  
+    "exchdb" : {
+    "descr" : "Dump Exchange Databases SD",
+    "ldap" : {
+        "base" : "configuration",
+        "scope" : "subtree",
+        "filter" : "(objectClass=msExchMDB)",
+        "attrs" : [
+            { "type" : "bin", "name" : "nTSecurityDescriptor"},
+        ],
+        "controls" : [
+            { "name" : "LDAP_SERVER_SD_FLAGS_OID", 
+              "ctrltype" : "server",
+              "valuetype" : "int",
+              "value" : "5",
+              "oid" : "1.2.840.113556.1.4.801" }
+        ]
+    }
+  },
+  
   "obj" : {
     "descr" : "Dump all LDAP objects",
     "ldap" : {
@@ -35,6 +73,11 @@
       { "type" : "str", "name" : "managedBy"},
       { "type" : "str", "name" : "msDS-RevealOnDemandGroup"},
       { "type" : "str", "name" : "msDS-NeverRevealGroup"},
+      { "type" : "str", "name" : "mail"},
+      { "type" : "str", "name" : "homeMDB"},
+      { "type" : "str", "name" : "msExchRoleEntries"},
+      { "type" : "str", "name" : "msExchUserLink"},
+      { "type" : "str", "name" : "msExchRoleLink"},
         ]
     }
   },

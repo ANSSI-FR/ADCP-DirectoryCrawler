@@ -1,22 +1,24 @@
-{ "ace" : {
+{
+  "ace" : {
     "descr" : "Dump all LDAP objects SD",
     "ldap" : {
         "base" : "*",
         "scope" : "subtree",
         "filter" : "(objectClass=*)",
         "attrs" : [
-            { "type" : "bin", "name" : "nTSecurityDescriptor"},
+            { "type" : "bin", "name" : "nTSecurityDescriptor"}
         ],
         "controls" : [
-            { "name" : "LDAP_SERVER_SD_FLAGS_OID", 
+            { "name" : "LDAP_SERVER_SD_FLAGS_OID",
               "ctrltype" : "server",
               "valuetype" : "int",
               "value" : "5",
-              "oid" : "1.2.840.113556.1.4.801" }
+              "oid" : "1.2.840.113556.1.4.801"
+            }
         ]
     }
   },
-  
+
   "mbxsd" : {
     "descr" : "Dump Exchange Mailbox SD",
     "ldap" : {
@@ -24,37 +26,39 @@
         "scope" : "subtree",
         "filter" : "(objectClass=*)",
         "attrs" : [
-            { "type" : "bin", "name" : "msExchMailboxSecurityDescriptor"},
+            { "type" : "bin", "name" : "msExchMailboxSecurityDescriptor"}
         ],
         "controls" : [
-            { "name" : "LDAP_SERVER_SD_FLAGS_OID", 
+            { "name" : "LDAP_SERVER_SD_FLAGS_OID",
               "ctrltype" : "server",
               "valuetype" : "int",
               "value" : "5",
-              "oid" : "1.2.840.113556.1.4.801" }
+              "oid" : "1.2.840.113556.1.4.801"
+            }
         ]
     }
   },
-  
-    "exchdb" : {
+
+  "exchdb" : {
     "descr" : "Dump Exchange Databases SD",
     "ldap" : {
         "base" : "configuration",
         "scope" : "subtree",
         "filter" : "(objectClass=msExchMDB)",
         "attrs" : [
-            { "type" : "bin", "name" : "nTSecurityDescriptor"},
+            { "type" : "bin", "name" : "nTSecurityDescriptor"}
         ],
         "controls" : [
-            { "name" : "LDAP_SERVER_SD_FLAGS_OID", 
+            { "name" : "LDAP_SERVER_SD_FLAGS_OID",
               "ctrltype" : "server",
               "valuetype" : "int",
               "value" : "5",
-              "oid" : "1.2.840.113556.1.4.801" }
+              "oid" : "1.2.840.113556.1.4.801"
+            }
         ]
     }
   },
-  
+
   "obj" : {
     "descr" : "Dump all LDAP objects",
     "ldap" : {
@@ -65,29 +69,23 @@
             { "type" : "str", "name" : "objectClass"},
             { "type" : "bin", "name" : "objectSid"},
             { "type" : "int", "name" : "adminCount"},
-			{ "type" : "str", "name" : "member"},
-			{ "type" : "str", "name" : "gPLink"},
-			{ "type" : "int", "name" : "primaryGroupID"},
-			{ "type" : "bin", "name" : "sIDHistory"},
-			{ "type" : "str", "name" : "cn"},
-      { "type" : "str", "name" : "managedBy"},
-      { "type" : "str", "name" : "msDS-RevealOnDemandGroup"},
-      { "type" : "str", "name" : "msDS-NeverRevealGroup"},
-      { "type" : "str", "name" : "mail"},
-      { "type" : "str", "name" : "homeMDB"},
-      { "type" : "str", "name" : "msExchRoleEntries"},
-      { "type" : "str", "name" : "msExchUserLink"},
-      { "type" : "str", "name" : "msExchRoleLink"},
-	  { "type" : "str", "name" : "userAccountControl"},
-	  { "type" : "str", "name" : "msDS-AllowedToDelegateTo"},
-	  { "type" : "bin", "name" : "msDS-AllowedToActOnBehalfOfOtherIdentity"},
-	  { "type" : "str", "name" : "servicePrincipalName"},
-	  { "type" : "str", "name" : "dNSHostName"},
-	  
+            { "type" : "str", "name" : "member"},
+            { "type" : "str", "name" : "gPLink"},
+            { "type" : "int", "name" : "primaryGroupID"},
+            { "type" : "bin", "name" : "sIDHistory"},
+            { "type" : "str", "name" : "cn"},
+            { "type" : "str", "name" : "managedBy"},
+            { "type" : "str", "name" : "msDS-RevealOnDemandGroup"},
+            { "type" : "str", "name" : "msDS-NeverRevealGroup"},
+            { "type" : "str", "name" : "mail"},
+            { "type" : "str", "name" : "homeMDB"},
+            { "type" : "str", "name" : "msExchRoleEntries"},
+            { "type" : "str", "name" : "msExchUserLink"},
+            { "type" : "str", "name" : "msExchRoleLink"}
         ]
     }
   },
-  
+
   "sch" : {
     "descr" : "Dump all Schema objects",
     "ldap" : {
@@ -98,9 +96,8 @@
             { "type" : "bin", "name" : "schemaIDGUID"},
             { "type" : "str", "name" : "governsID"},
             { "type" : "str", "name" : "defaultSecurityDescriptor"},
-            { "type" : "str", "name" : "lDAPDisplayName"},
+            { "type" : "str", "name" : "lDAPDisplayName"}
         ]
     }
-  },
+  }
 }
-

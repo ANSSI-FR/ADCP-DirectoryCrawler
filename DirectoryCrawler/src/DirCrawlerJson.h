@@ -1,10 +1,9 @@
 #ifndef __DIR_CRAWLER_JSON_H__
 #define __DIR_CRAWLER_JSON_H__
 
-
 /* --- INCLUDES ------------------------------------------------------------- */
 #include "DirectoryCrawler.h"
-#include "LibJson\src\JsonLib.h"
+#include <JsonLib.h>
 
 /* --- DEFINES -------------------------------------------------------------- */
 //
@@ -54,6 +53,5 @@ void DirCrawlerJsonParseRequestFile(
 void DirCrawlerJsonReleaseRequests(
     _In_ const PDIR_CRAWLER_REQ_DESCR_ARRAY pReqDescr
     );
-
 
 #endif // __DIR_CRAWLER_JSON_H__

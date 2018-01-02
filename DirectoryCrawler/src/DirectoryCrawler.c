@@ -4,7 +4,6 @@
 #include "DirCrawlerFormatters.h"
 #include <Winber.h>
 
-
 /* --- PRIVATE VARIABLES ---------------------------------------------------- */
 static PSLIST_HEADER gs_pReqListHead = NULL;
 static DIR_CRAWLER_OPTIONS gs_sOptions = { 0 };
@@ -36,7 +35,6 @@ static const DIR_CRAWLER_LDAP_CONTROL_DESCRIPTION gsc_asAlwaysOnCtrlsList[] = {
 
 /* --- PUBLIC VARIABLES ----------------------------------------------------- */
 PUTILS_HEAP g_pDirCrawlerHeap = NULL;
-
 
 /* --- PRIVATE FUNCTIONS ---------------------------------------------------- */
 __declspec(noreturn) static void DirCrawlerUsage(
@@ -218,7 +216,6 @@ static BOOL DirCrawlerFormatOutfile(
     int size = -1;
     PTCHAR ptRootFolderName = DirCrawlerComputeOutputRootFolderName();
 
-
     if (ptFileNameElmt2 != NULL) {
         size = _stprintf_s(ptOutFileName, MAX_PATH, _T("%s\\%s\\%s\\%s_%s_%s.%s"), ptOutputDirName, ptRootFolderName, ptOutputFolderName, ptFilePrefix, ptFileNameElmt1, ptFileNameElmt2, ptFileExtension);
     }
@@ -370,14 +367,14 @@ static BOOL DirCrawlerCreateAttributesArray(
     DWORD i = 0;
 
     (*ppptAttrsList) = UtilsHeapAllocArrayHelper(g_pDirCrawlerHeap, PDIR_CRAWLER_LDAP_ATTRIBUTE_DESCRIPTION, pReqDescr->ldap.attributes.dwAttrCount + 1); // +1 because it always starts with DN
-	(*pdwAttrsCount) = pReqDescr->ldap.attributes.dwAttrCount + 1;
-	((*ppptAttrsList)[0]) = UtilsHeapAllocHelper(g_pDirCrawlerHeap, sizeof(DIR_CRAWLER_LDAP_ATTRIBUTE_DESCRIPTION));
+    (*pdwAttrsCount) = pReqDescr->ldap.attributes.dwAttrCount + 1;
+    ((*ppptAttrsList)[0]) = UtilsHeapAllocHelper(g_pDirCrawlerHeap, sizeof(DIR_CRAWLER_LDAP_ATTRIBUTE_DESCRIPTION));
     ((*ppptAttrsList)[0])->ptName = UtilsHeapStrDupHelper(g_pDirCrawlerHeap, LDAP_ATTR_DISTINGUISHED_NAME);
 
     for (i = 0; i < (*pdwAttrsCount) - 1 ; i++) {
-		((*ppptAttrsList)[i + 1]) = UtilsHeapAllocHelper(g_pDirCrawlerHeap, sizeof(DIR_CRAWLER_LDAP_ATTRIBUTE_DESCRIPTION));
+        ((*ppptAttrsList)[i + 1]) = UtilsHeapAllocHelper(g_pDirCrawlerHeap, sizeof(DIR_CRAWLER_LDAP_ATTRIBUTE_DESCRIPTION));
         ((*ppptAttrsList)[i + 1])->ptName = UtilsHeapStrDupHelper(g_pDirCrawlerHeap, pReqDescr->ldap.attributes.pAttrArray[i].ptName);
-		((*ppptAttrsList)[i + 1])->eType = pReqDescr->ldap.attributes.pAttrArray[i].eType;
+        ((*ppptAttrsList)[i + 1])->eType = pReqDescr->ldap.attributes.pAttrArray[i].eType;
     }
 
     return TRUE;
@@ -392,8 +389,8 @@ static PTCHAR DirCrawlerStringifyAttribute(
     LPSTR pOutBuff = NULL;
     LPSTR pCurrentBuff = NULL;
     PFN_LDAP_ATTR_VALUE_FORMATTER pfnFormatter = gc_ppfnFormatters[pAttrDesc->eType];
-	DWORD szMbBuffer = 0;
-	LPWSTR lpwOutBuff = NULL;
+    DWORD szMbBuffer = 0;
+    LPWSTR lpwOutBuff = NULL;
 
     for (i = 0; i < pLdapAttribute->dwValuesCount; i++) {
         dwLen += pfnFormatter(pLdapAttribute->ppValues[i], NULL); // NULL as buffer == only return the required len
@@ -409,9 +406,9 @@ static PTCHAR DirCrawlerStringifyAttribute(
     }
 
 #ifdef UNICODE
-	szMbBuffer = MultiByteToWideChar(CP_UTF8, MB_ERR_INVALID_CHARS, (LPCCH)pOutBuff, -1, NULL, 0);
-	lpwOutBuff = UtilsHeapAllocStrHelper(g_pDirCrawlerHeap, szMbBuffer * sizeof(TCHAR));
-	MultiByteToWideChar(CP_UTF8, MB_ERR_INVALID_CHARS, (LPCCH)pOutBuff, -1, lpwOutBuff, szMbBuffer);
+    szMbBuffer = MultiByteToWideChar(CP_UTF8, MB_ERR_INVALID_CHARS, (LPCCH)pOutBuff, -1, NULL, 0);
+    lpwOutBuff = UtilsHeapAllocStrHelper(g_pDirCrawlerHeap, szMbBuffer * sizeof(TCHAR));
+    MultiByteToWideChar(CP_UTF8, MB_ERR_INVALID_CHARS, (LPCCH)pOutBuff, -1, lpwOutBuff, szMbBuffer);
     UtilsHeapFreeAndNullHelper(g_pDirCrawlerHeap, pOutBuff);
     return lpwOutBuff;
 #else
@@ -473,7 +470,6 @@ static BOOL DirCrawlerWriteLdapEntryToTsvOutfile(
     if (dwCsvHeaderCount != (dwAttrCount + 1)) {
        REQ_FATAL(pReqDescr, _T("Incoherent record count : excepted %d records but %d provided."), dwCsvHeaderCount, (dwAttrCount + 1));
     }
-
 
     // Write CSV record
     bResult = CsvWriteNextRecord(hCsvOutfile, pptCsvRecord, NULL);
@@ -559,7 +555,7 @@ static void DirCrawlerProcessLdapRequest(
     PLDAP_CONNECT pLdapConnect = NULL;
     TCHAR atOutFileName[MAX_PATH] = { 0 };
     CSV_HANDLE hCsvOutfile = CSV_INVALID_HANDLE_VALUE;
-	PDIR_CRAWLER_LDAP_ATTRIBUTE_DESCRIPTION *pptAttrsList = { 0 };
+    PDIR_CRAWLER_LDAP_ATTRIBUTE_DESCRIPTION *pptAttrsList = { 0 };
     PTCHAR *pptAttrsListForLdap = { 0 };
     PTCHAR *pptAttrsListForCsv = { 0 };
     DWORD dwAttrsCount = 0;
@@ -582,14 +578,13 @@ static void DirCrawlerProcessLdapRequest(
     if (bResult == FALSE) {
         REQ_FATAL(pReqDescr, _T("Failed to create attribute list"));
     }
-	pptAttrsListForCsv = UtilsHeapAllocArrayHelper(g_pDirCrawlerHeap, PTCHAR, dwAttrsCount + 1); // Apparently LdapLib needs a final NULL...
-	for (i = 0; i < dwAttrsCount ; i++) {
-		pptAttrsListForCsv[i] = UtilsHeapStrDupHelper(g_pDirCrawlerHeap,pptAttrsList[i]->ptName);
-	}
-	pptAttrsListForCsv[dwAttrsCount] = NULL;
+    pptAttrsListForCsv = UtilsHeapAllocArrayHelper(g_pDirCrawlerHeap, PTCHAR, dwAttrsCount + 1); // Apparently LdapLib needs a final NULL...
+    for (i = 0; i < dwAttrsCount ; i++) {
+        pptAttrsListForCsv[i] = UtilsHeapStrDupHelper(g_pDirCrawlerHeap,pptAttrsList[i]->ptName);
+    }
+    pptAttrsListForCsv[dwAttrsCount] = NULL;
     pptAttrsListForLdap = &pptAttrsListForCsv[1]; // skip 'DN' for the LDAP request
-	pptAttrsList = &pptAttrsList[1];
-	 
+    pptAttrsList = &pptAttrsList[1];
 
     bResult = DirCrawlerAddControlsArray(pReqDescr, gsc_asAlwaysOnCtrlsList, _countof(gsc_asAlwaysOnCtrlsList), &ppClientCtrlsList, &ppServerCtrlsList, &dwClientCtrlsCount, &dwServerCtrlsCount, FALSE);
     if (bResult == FALSE) {
@@ -612,7 +607,7 @@ static void DirCrawlerProcessLdapRequest(
     if (!bResult) {
         REQ_FATAL(pReqDescr, _T("Failed to connect to ldap server: <err:%#08x>"), LdapLastError());
     }
-    
+
     // Ldap Bind
     if (pReqDescr->ldap.base.eType != DirCrawlerLdapBaseWildcardAll) {
         ptLdapBindingNc = DirCrawlerGetBindingNc(pLdapRootDse, pReqDescr);
@@ -700,7 +695,7 @@ DWORD WINAPI DirCrawlerDoRequests(
         __except (EXCEPTION_EXECUTE_HANDLER) {
             REQ_LOG(pReqListEntry->pReqDescr, Err, _T("Abnormal termination"));
         }
-        
+
         _aligned_free(pReqListEntry);
     }
 
@@ -717,7 +712,7 @@ int _tmain(
     // Variables
     //
     BOOL bResult = FALSE;
-	BOOL globalSuccess = FALSE;
+    BOOL globalSuccess = FALSE;
     DWORD dwResult = 0;
     DWORD i = 0;
     DWORD dwSentReqCount = 0;
@@ -735,6 +730,13 @@ int _tmain(
     //
     // Init
     //
+    //WPP_INIT_TRACING();
+    LdapLibInit();
+    CsvLibInit();
+    JsonLibInit();
+    UtilsLibInit();
+    LogLibInit();
+
     bResult = UtilsHeapCreate(&g_pDirCrawlerHeap, DIR_CRAWLER_HEAP_NAME, NULL);
     if (!bResult) {
         FATAL(_T("Failed to create programm heap: <err:%#08x>"), UtilsGetLastError());
@@ -849,14 +851,12 @@ int _tmain(
        FATAL(_T("Failed to setup log level and log file: <err:%#08x>"), LogGetLastError());
     }
 
-
     //
     // JSON Parsing
     //
     LOG(Succ, _T("Reading requests from JSON file <%s>"), gs_sOptions.dump.ptJsonFile);
     DirCrawlerJsonParseRequestFile(gs_sOptions.dump.ptJsonFile, &sRequestsDescriptions);
     LOG(Succ, SUB_LOG(_T("Read <%u> LDAP requests")), sRequestsDescriptions.dwRequestCount);
-
 
     //
     // LDAP connexion
@@ -935,9 +935,9 @@ int _tmain(
         dwSentReqCount,
         TIME_DIFF_SEC(ullTimeStart, GetTickCount64()));
 
-	if (dwSentReqCount - (*gs_plSucceededRequestsCount) == 0) {
-		globalSuccess = TRUE;
-	}
+    if (dwSentReqCount - (*gs_plSucceededRequestsCount) == 0) {
+        globalSuccess = TRUE;
+    }
     //
     // Cleanup & exit
     //
@@ -958,10 +958,17 @@ int _tmain(
 
     LOG(Succ, _T("Exit."));
 
-	if (globalSuccess) {
-		return EXIT_SUCCESS;
-	}
-	else {
-		return EXIT_FAILURE;
-	}
+    //WPP_CLEANUP();
+    LdapLibCleanup();
+    CsvLibCleanup();
+    JsonLibCleanup();
+    UtilsLibCleanup();
+    LogLibCleanup();
+
+    if (globalSuccess) {
+        return EXIT_SUCCESS;
+    }
+    else {
+        return EXIT_FAILURE;
+    }
 }

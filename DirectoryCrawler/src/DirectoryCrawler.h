@@ -1,15 +1,16 @@
 #ifndef __DIR_CRAWLER_H__
 #define __DIR_CRAWLER_H__
 
-
 /* --- INCLUDES ------------------------------------------------------------- */
 #include <Shlobj.h>
 #define UTILS_REQUIRE_GETOPT_COMPLEX
-#include "LibUtils\src\UtilsLib.h"
-#include "LibLog\src\LogLib.h"
-#include "LibLdap\src\LdapLib.h"
-#include "LibLdap\src\LdapHelpers.h"
-#include "LibCsv\src\CsvLib.h"
+#define STATIC_GETOPT
+#define LIB_ERROR_VAL NOT_USED
+#include <UtilsLib.h>
+#include <LogLib.h>
+#include <LdapLib.h>
+#include <LdapHelpers.h>
+#include <CsvLib.h>
 
 /* --- DEFINES -------------------------------------------------------------- */
 
@@ -32,7 +33,7 @@
                                         MULTI_LINE_MACRO_END
 
 //
-// Outfiles 
+// Outfiles
 //
 #define DIR_CRAWLER_LOG_DIR             _T("Logs")
 #define DIR_CRAWLER_OUTPUT_DIR          _T("Ldap")
@@ -41,7 +42,6 @@
 #define DIR_CRAWLER_OUTFILES_EXT        _T("csv")
 #define DIR_CRAWLER_LOGFILE_EXT         _T("log")
 #define DIR_CRAWLER_LOGFILE_PREFIX      _T("XX")
-
 
 /* --- TYPES ---------------------------------------------------------------- */
 typedef struct _LDAP_OPTIONS {
@@ -126,7 +126,6 @@ typedef struct _DIR_CRAWLER_LDAP_CONTROL_DESCRIPTION {
     } value;
 } DIR_CRAWLER_LDAP_CONTROL_DESCRIPTION, *PDIR_CRAWLER_LDAP_CONTROL_DESCRIPTION;
 
-
 typedef struct _DIR_CRAWLER_REQ_DESCR {
     struct {
         PTCHAR ptName;
@@ -141,10 +140,10 @@ typedef struct _DIR_CRAWLER_REQ_DESCR {
                 PTCHAR ptBaseDN;
             } value;
         } base;
-        
+
         LDAP_REQ_SCOPE eScope;
         PTCHAR ptFilter;
-        
+
         struct {
             DWORD dwAttrCount;
             PDIR_CRAWLER_LDAP_ATTRIBUTE_DESCRIPTION pAttrArray;
@@ -168,10 +167,8 @@ typedef struct _DIR_CRAWLER_REQ_LIST_ENTRY {
     PDIR_CRAWLER_REQ_DESCR pReqDescr;
 } DIR_CRAWLER_REQ_LIST_ENTRY, *PDIR_CRAWLER_REQ_LIST_ENTRY;
 
-
 /* --- VARIABLES ------------------------------------------------------------ */
 extern PUTILS_HEAP g_pDirCrawlerHeap;
-
 
 /* --- PROTOTYPES ----------------------------------------------------------- */
 

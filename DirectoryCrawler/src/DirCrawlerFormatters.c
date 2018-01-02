@@ -1,7 +1,6 @@
 /* --- INCLUDES ------------------------------------------------------------- */
 #include "DirCrawlerFormatters.h"
 
-
 /* --- PRIVATE VARIABLES ---------------------------------------------------- */
 /* --- PUBLIC VARIABLES ----------------------------------------------------- */
 const PFN_LDAP_ATTR_VALUE_FORMATTER gc_ppfnFormatters[] = {

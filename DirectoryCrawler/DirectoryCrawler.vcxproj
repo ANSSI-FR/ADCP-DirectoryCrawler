@@ -9,12 +9,12 @@
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="RelADCP|Win32">
-      <Configuration>RelADCP</Configuration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="RelADCP|x64">
-      <Configuration>RelADCP</Configuration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="VLD|Win32">
@@ -45,7 +45,7 @@
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelADCP|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
@@ -59,7 +59,7 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelADCP|x64'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
@@ -82,13 +82,13 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='RelADCP|Win32'">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='VLD|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='RelADCP|x64'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='VLD|x64'" Label="PropertySheets">
@@ -100,37 +100,45 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CustomBuildAfterTargets>copy $(OutDir)\$(TargetFileName) ..\..\..\Bin\</CustomBuildAfterTargets>
+    <IncludePath>$(SolutionDir)\libdev;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CustomBuildAfterTargets>copy $(OutDir)\$(TargetFileName) ..\..\..\Bin\</CustomBuildAfterTargets>
+    <IncludePath>$(SolutionDir)\libdev;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libdev\$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelADCP|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CustomBuildAfterTargets>copy $(OutDir)\$(TargetFileName) ..\..\..\Bin\</CustomBuildAfterTargets>
+    <IncludePath>$(SolutionDir)\libdev;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='VLD|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CustomBuildAfterTargets>copy $(OutDir)\$(TargetFileName) ..\..\..\Bin\</CustomBuildAfterTargets>
+    <IncludePath>$(SolutionDir)\libdev;$(IncludePath)</IncludePath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelADCP|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CustomBuildAfterTargets>
     </CustomBuildAfterTargets>
+    <LibraryPath>$(SolutionDir)libdev\$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\libdev;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='VLD|x64'">
     <LinkIncremental>false</LinkIncremental>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CustomBuildAfterTargets />
+    <IncludePath>$(SolutionDir)\libdev;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -149,7 +157,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Advapi32.lib;Wldap32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Advapi32.lib;Wldap32.lib;Ole32.lib;LibCache.lib;LibCsv.lib;LibJson.lib;LibLdap.lib;LibLog.lib;LibUtils.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -185,7 +193,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Advapi32.lib;Wldap32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Advapi32.lib;Wldap32.lib;Ole32.lib;LibCache.lib;LibCsv.lib;LibJson.lib;LibLdap.lib;LibLog.lib;LibUtils.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -204,12 +212,11 @@
       </Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelADCP|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -222,10 +229,9 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>Advapi32.lib;Wldap32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Advapi32.lib;Wldap32.lib;Ole32.lib;LibCache.lib;LibCsv.lib;LibJson.lib;LibLdap.lib;LibLog.lib;LibUtils.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -266,7 +272,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>Advapi32.lib;Wldap32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Advapi32.lib;Wldap32.lib;Ole32.lib;LibCache.lib;LibCsv.lib;LibJson.lib;LibLdap.lib;LibLog.lib;LibUtils.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -285,7 +291,7 @@
       </Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelADCP|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <PrecompiledHeader>
@@ -303,13 +309,13 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>Advapi32.lib;Wldap32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Advapi32.lib;Wldap32.lib;Ole32.lib;LibCache.lib;LibCsv.lib;LibJson.lib;LibLdap.lib;LibLog.lib;LibUtils.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(OutDir)$(TargetName)$(TargetExt) ..\..\..\Bin\ &amp;&amp; copy ..\ADng_ADCP.json ..\..\..\Bin\</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>
@@ -346,7 +352,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>Advapi32.lib;Wldap32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Advapi32.lib;Wldap32.lib;Ole32.lib;LibCache.lib;LibCsv.lib;LibJson.lib;LibLdap.lib;LibLog.lib;LibUtils.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -371,26 +377,13 @@
     <ClCompile Include="src\DirectoryCrawler.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="src\DirCrawlerFormatters.h" />
     <ClInclude Include="src\DirCrawlerJson.h" />
     <ClInclude Include="src\DirectoryCrawler.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\libdev\LibCsv\LibCsv.vcxproj">
-      <Project>{181426ac-372d-40c3-86f9-554be0f6f069}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\libdev\LibJson\LibJson.vcxproj">
-      <Project>{33c0fe4c-8ef9-493d-af1a-ba79e3b949e5}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\libdev\LibLdap\LibLdap.vcxproj">
-      <Project>{dbc8faf7-6789-4a8f-ae11-7d17e6ed8b16}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\libdev\LibLog\LibLog.vcxproj">
-      <Project>{1d4e068b-acee-4c7e-b361-4419377871c8}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\libdev\LibUtils\LibUtils.vcxproj">
-      <Project>{abc59760-7700-49f3-ac9e-a29414b1c5ce}</Project>
-    </ProjectReference>
+    <ResourceCompile Include="DirectoryCrawler.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

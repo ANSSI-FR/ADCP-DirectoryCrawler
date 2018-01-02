@@ -1,10 +1,8 @@
 #ifndef __DIR_CRAWLER_FORMATTERS_H__
 #define __DIR_CRAWLER_FORMATTERS_H__
 
-
 /* --- INCLUDES ------------------------------------------------------------- */
 #include "DirectoryCrawler.h"
-
 
 /* --- DEFINES -------------------------------------------------------------- */
 /* --- TYPES ---------------------------------------------------------------- */
@@ -18,7 +16,6 @@ typedef DWORD(FN_LDAP_ATTR_VALUE_FORMATTER)(
     );
 typedef FN_LDAP_ATTR_VALUE_FORMATTER *PFN_LDAP_ATTR_VALUE_FORMATTER;
 
-
 /* --- VARIABLES ------------------------------------------------------------ */
 extern const PFN_LDAP_ATTR_VALUE_FORMATTER gc_ppfnFormatters[];
 
@@ -26,6 +23,5 @@ extern const PFN_LDAP_ATTR_VALUE_FORMATTER gc_ppfnFormatters[];
 FN_LDAP_ATTR_VALUE_FORMATTER FormatLdapAttrStr;
 FN_LDAP_ATTR_VALUE_FORMATTER FormatLdapAttrInt;
 FN_LDAP_ATTR_VALUE_FORMATTER FormatLdapAttrBin;
-
 
 #endif // __DIR_CRAWLER_FORMATTERS_H__

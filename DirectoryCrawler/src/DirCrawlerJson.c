@@ -171,7 +171,7 @@ static BOOL DirCrawlerEntryExtractLdapSingleAttr(
     if (pJsonElement->eObjectType != JsonResultTypeObject) {
         FATAL(_T("JSON error: attribute <%u> of sub-element <%s> is not an object"), pReqDescr->ldap.attributes.dwAttrCount, pReqDescr->infos.ptName);
     }
-    
+
     pReqDescr->ldap.attributes.pAttrArray = UtilsHeapAllocOrReallocHelper(g_pDirCrawlerHeap, pReqDescr->ldap.attributes.pAttrArray, SIZEOF_ARRAY(DIR_CRAWLER_LDAP_ATTRIBUTE_DESCRIPTION, pReqDescr->ldap.attributes.dwAttrCount + 1));
     return JsonObjectForeachRequestedElement(pJsonElement, FALSE, sc_asJsonLdapAttrElements, _countof(sc_asJsonLdapAttrElements), &pReqDescr->ldap.attributes.pAttrArray[pReqDescr->ldap.attributes.dwAttrCount], NULL);
 }
@@ -198,7 +198,7 @@ static BOOL DirCrawlerEntryExtractLdapBaseStr(
     static_assert(_countof(sc_aptWellKnownBases) == _countof(sc_aeWellKnownBases), "Invalid array count");
     PDIR_CRAWLER_REQ_DESCR pReqDescr = (PDIR_CRAWLER_REQ_DESCR)pvContext;
     DWORD dwIndex = 0;
-    
+
     if (STR_EQ(JSON_BASE_WILDCARD_NC, JSON_STRVAL(pJsonElement))) {
         pReqDescr->ldap.base.eType = DirCrawlerLdapBaseWildcardAll;
         LOG(Info, SUB_LOG(SUB_LOG(_T("Base      : <*>"))));

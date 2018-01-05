@@ -135,7 +135,6 @@ UpgradeLog*.htm
 App_Data/*.mdf
 App_Data/*.ldf
 
-
 #LightSwitch generated files
 GeneratedArtifacts/
 _Pvt_Extensions/
@@ -155,47 +154,7 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
+# =========================
 # Mac desktop service store files
+# =========================
 .DS_Store
-LibJson/src/LibJson.tlog/cl.command.1.tlog
-LibJson/src/LibJson.tlog/CL.read.1.tlog
-LibJson/src/LibJson.tlog/CL.write.1.tlog
-LibJson/src/LibJson.tlog/LibJson.lastbuildstate
-LibJson/src/LibJson.tlog/LibJson.write.1u.tlog
-LibJson/src/LibJson.tlog/link.command.1.tlog
-LibJson/src/LibJson.tlog/link.read.1.tlog
-LibJson/src/LibJson.tlog/link.write.1.tlog
-LibJson/src/vc120.idb
-LibCsv/src/CsvLinukse.tmh
-LibJson/src/JsonInternals.tmh
-LibJson/src/JsonLib.tmh
-LibJson/TestCase/VLD/LibJsonTestCase.tlog/cl.command.1.tlog
-LibJson/TestCase/VLD/LibJsonTestCase.tlog/cl.read.1.tlog
-LibJson/TestCase/VLD/LibJsonTestCase.tlog/cl.write.1.tlog
-LibJson/TestCase/VLD/LibJsonTestCase.tlog/LibJsonTestCase.lastbuildstate
-LibJson/TestCase/VLD/LibJsonTestCase.tlog/link.command.1.tlog
-LibJson/TestCase/VLD/LibJsonTestCase.tlog/link.read.1.tlog
-LibJson/TestCase/VLD/LibJsonTestCase.tlog/link.write.1.tlog
-LibJson/TestCase/VLD/main.nativecodeanalysis.xml
-LibJson/TestCase/VLD/NativeCodeAnalysis.read.1.tlog
-LibJson/TestCase/VLD/vc.nativecodeanalysis.all.xml
-LibJson/VLD/LibJson.dll
-LibJson/VLD/LibJson.exp
-LibJson/VLD/LibJson.lib
-LibJson/VLD/LibJson.tlog/cl.command.1.tlog
-LibJson/VLD/LibJson.tlog/CL.read.1.tlog
-LibJson/VLD/LibJson.tlog/CL.write.1.tlog
-LibJson/VLD/LibJson.tlog/LibJson.lastbuildstate
-LibJson/VLD/LibJson.tlog/unsuccessfulbuild
-LibJson/VLD/LibUtils.dll
-LibJson/VLD/LibUtils.exp
-LibJson/VLD/LibUtils.lib
-LibJson/VLD/vc120.idb
-LibUtils/VLD/LibUtils.tlog/cl.command.1.tlog
-LibUtils/VLD/LibUtils.tlog/CL.read.1.tlog
-LibUtils/VLD/LibUtils.tlog/CL.write.1.tlog
-LibUtils/VLD/LibUtils.tlog/LibUtils.lastbuildstate
-LibUtils/VLD/LibUtils.tlog/LibUtils.write.1u.tlog
-LibUtils/VLD/LibUtils.tlog/link.command.1.tlog
-LibUtils/VLD/LibUtils.tlog/link.read.1.tlog
-LibUtils/VLD/LibUtils.tlog/link.write.1.tlog

@@ -1,4 +1,0 @@
-[submodule "libdev"]
-	path = libdev
-	url = https://github.com/ANSSI-FR/ADCP-libdev.git
-	branch = master

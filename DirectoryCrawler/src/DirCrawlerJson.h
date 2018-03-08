@@ -3,7 +3,7 @@
 
 /* --- INCLUDES ------------------------------------------------------------- */
 #include "DirectoryCrawler.h"
-#include <Include\JsonLib.h>
+#include "JsonLib.h"
 
 /* --- DEFINES -------------------------------------------------------------- */
 //

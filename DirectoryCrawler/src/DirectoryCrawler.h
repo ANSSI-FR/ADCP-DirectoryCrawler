@@ -5,12 +5,11 @@
 #include <Shlobj.h>
 #define UTILS_REQUIRE_GETOPT_COMPLEX
 #define STATIC_GETOPT
-#define LIB_ERROR_VAL NOT_USED
-#include <Include\UtilsLib.h>
-#include <Include\LogLib.h>
-#include <Include\LdapLib.h>
-#include <Include\LdapHelpers.h>
-#include <Include\CsvLib.h>
+#include "UtilsLib.h"
+#include "LogLib.h"
+#include "LdapLib.h"
+#include "LdapHelpers.h"
+#include "CsvLib.h"
 
 /* --- DEFINES -------------------------------------------------------------- */
 //

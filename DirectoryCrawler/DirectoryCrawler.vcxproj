@@ -100,14 +100,15 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CustomBuildAfterTargets>copy $(OutDir)\$(TargetFileName) ..\..\..\Bin\</CustomBuildAfterTargets>
-    <IncludePath>$(SolutionDir)\libdev;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)libdev\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libdev\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CustomBuildAfterTargets>copy $(OutDir)\$(TargetFileName) ..\..\..\Bin\</CustomBuildAfterTargets>
-    <IncludePath>$(SolutionDir)\libdev;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)libdev\Include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)libdev\$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -115,14 +116,16 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CustomBuildAfterTargets>copy $(OutDir)\$(TargetFileName) ..\..\..\Bin\</CustomBuildAfterTargets>
-    <IncludePath>$(SolutionDir)\libdev;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)libdev\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libdev\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='VLD|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CustomBuildAfterTargets>copy $(OutDir)\$(TargetFileName) ..\..\..\Bin\</CustomBuildAfterTargets>
-    <IncludePath>$(SolutionDir)\libdev;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)libdev\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libdev\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -131,14 +134,15 @@
     <CustomBuildAfterTargets>
     </CustomBuildAfterTargets>
     <LibraryPath>$(SolutionDir)libdev\$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
-    <IncludePath>$(SolutionDir)\libdev;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)libdev\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='VLD|x64'">
     <LinkIncremental>false</LinkIncremental>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CustomBuildAfterTargets />
-    <IncludePath>$(SolutionDir)\libdev;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)libdev\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libdev\$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

@@ -81,7 +81,12 @@
             { "type" : "str", "name" : "homeMDB"},
             { "type" : "str", "name" : "msExchRoleEntries"},
             { "type" : "str", "name" : "msExchUserLink"},
-            { "type" : "str", "name" : "msExchRoleLink"}
+            { "type" : "str", "name" : "msExchRoleLink"},
+            { "type" : "str", "name" : "userAccountControl"},
+            { "type" : "str", "name" : "msDS-AllowedToDelegateTo"},
+            { "type" : "bin", "name" : "msDS-AllowedToActOnBehalfOfOtherIdentity"},
+            { "type" : "str", "name" : "servicePrincipalName"},
+            { "type" : "str", "name" : "dNSHostName"}
         ]
     }
   },
